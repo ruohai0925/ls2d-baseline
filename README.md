@@ -9,6 +9,26 @@ Every routine cites the equation it discretises; `docs/algorithm.md` maps paper 
 Purpose: a compact reference implementation that can be read end-to-end and that is verified against
 published results, small enough to serve as a starting point for further method development.
 
+## What is in this repository, and on which branch
+
+The repository holds one solver in two configurations. They share the same projection-method core —
+the Godunov predictor, the MAC and nodal projections, the Crank–Nicolson viscous solve and the
+geometric multigrid — and differ only in whether an interface between two fluids exists at all.
+Pick the branch that matches the problem you are starting from; each is validated on its own and
+neither is a work-in-progress version of the other.
+
+| branch | what it is | validated against |
+|---|---|---|
+| `main` | the **two-phase** solver: a level set with Sussman–Fatemi redistancing, density and viscosity varying across the interface, surface tension, and the prescribed-velocity interface tests | Zalesak disk and single vortex (Enright et al. 2002), Taylor–Green, hydrostatic balance at a density ratio of 1000, Rayleigh–Taylor (Guermond & Salgado 2009), Laplace's law, and the rising-bubble benchmark of Hysing et al. (2009) |
+| `single-phase` | the **constant-density** solver: the level set, redistancing, variable material properties, surface tension and the interface tests are removed, leaving the projection method on its own (`src/` goes from 2032 to 1427 lines). Adds a lid-driven cavity problem | Taylor–Green, reproducing `main`'s errors bit for bit, which is the regression showing the strip changed nothing; and the lid-driven cavity at Re = 100, 400 and 1000 against Ghia, Ghia & Shin (1982) |
+
+Use `main` if the problem has an interface: a rising bubble, a dam break, a droplet, a wave. Use
+`single-phase` if it does not, or if you want the smallest readable starting point — a
+constant-property incompressible solver with no interface machinery to work around.
+
+The two branches are kept in step: a fix to the shared core is applied to both, and the Taylor–Green
+regression above is what checks that they have not drifted apart.
+
 ## Build and run
 ```
 make                               # -> ./ls2d   (g++ -O2 -std=c++17, no libraries)
