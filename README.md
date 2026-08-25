@@ -1,15 +1,13 @@
 # ls2d-baseline — a readable single-core 2D level-set two-phase Navier–Stokes solver
 
-Baseline code for two FrontierPhysics tasks (multiphase flow, fluid–structure interaction).
-
 A from-scratch, dependency-free C++17 implementation of the variable-density approximate projection
 method of Almgren et al. (JCP 142, 1998) coupled to the level-set method of Sussman et al. (JCP 148,
 1999), with the redistancing / volume constraint of Sussman & Fatemi (SIAM J. Sci. Comput. 20, 1999).
 Every routine cites the equation it discretises; `docs/algorithm.md` maps paper equations to functions,
 `docs/results.md` compares the code with the literature.
 
-Purpose: a baseline that a beginner can read end-to-end and that is verified against published
-results, from which the FrontierPhysics tasks (multiphase flow, fluid–structure interaction) are built.
+Purpose: a compact reference implementation that can be read end-to-end and that is verified against
+published results, small enough to serve as a starting point for further method development.
 
 ## Build and run
 ```
