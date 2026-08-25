@@ -1,9 +1,0 @@
-problem rt
-grid 64 256
-steps 397
-t_final 3.5355
-kinetic_energy 0.6495623
-max_div_mac 3.2143188e-10
-max_div_nodal 0.17010777
-interface_ymin -1.0610957
-interface_ymax 0.65178412

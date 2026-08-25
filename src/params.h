@@ -1,7 +1,7 @@
 // params.h — tiny key = value input-file reader.
 //
 // Accepts AMReX-style `key = value` lines such as
-//     ns.epsilon = 2
+//     ns.cfl = 0.5
 //     geometry.prob_hi = 1.0 1.0
 //     # comment
 // Values are kept as strings and converted on request.  Unknown keys are

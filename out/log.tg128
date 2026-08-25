@@ -1,5 +1,20 @@
-ls2d-baseline flow  problem=taylorgreen grid=128x128 rho=1/1 mu=0.01/0.01 g=0
-  init iteration 1: dt=3.909e-03 nodal iters=180
-  init iteration 2: dt=3.909e-03 nodal iters=177
-  init iteration 3: dt=3.909e-03 nodal iters=175
-L2_error_u 2.37258e-05  Linf_u 0.000121237  L2_p 0.364769
+  amr.n_cell = 128 128
+  amr.plot_int = 0
+  diag.interval = 10
+  geometry.is_periodic = 1 1
+  geometry.prob_hi = 1 1
+  geometry.prob_lo = 0 0
+  lin.rtol = 1e-11
+  ns.cfl = 0.5
+  ns.init_iter = 3
+  ns.mu = 0.01
+  ns.rho = 1.0
+  out_dir = out/tg128
+  prob.type = taylorgreen
+  stop_time = 0.2
+ls2d-baseline (single phase)  problem=taylorgreen grid=128x128 rho=1 mu=0.01 g=0  Re=100 (per unit velocity)
+  init iteration 1: dt=3.909e-03 nodal iters=7
+  init iteration 2: dt=3.909e-03 nodal iters=6
+  init iteration 3: dt=3.909e-03 nodal iters=6
+L2_error_u 2.37258e-05  Linf_u 0.000121237  L2_p 0.000178214
+done: 48 steps, t=0.2, max|dU/dt|=6.744e-01 at cell (63,96), rms 4.771e-01, wall 8.7 s

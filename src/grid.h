@@ -73,8 +73,3 @@ private:
     int nx_ = 0, ny_ = 0, ng_ = 0, sx_ = 0, sy_ = 0;
     std::vector<double> data_;
 };
-
-// minmod limiter: the argument of smaller magnitude.  Sussman 1999 eq. (63).
-inline double minmod(double a, double b) {
-    return (std::fabs(a) <= std::fabs(b)) ? a : b;
-}

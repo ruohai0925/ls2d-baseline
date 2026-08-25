@@ -2,12 +2,15 @@ problem taylorgreen
 grid 128 128
 steps 48
 t_final 0.2
+steady 0
+max_dudt 0.67438357
+max_dudt_cell 63 96
+rms_dudt 0.47711519
+wall_time_s 8.6613254
 kinetic_energy 0.18230467
-max_div_mac 7.8514972e-13
-max_div_nodal 0.00016680924
-L2_error_u 2.3725756e-05
-L2_error_v 2.2327918e-05
-Linf_error_u 0.00012123678
-L2_error_p 0.36476878
-interface_ymin 1e+30
-interface_ymax -1e+30
+max_div_mac 4.8255844e-13
+max_div_nodal 0.00016681381
+L2_error_u 2.3725758e-05
+L2_error_v 2.2327919e-05
+Linf_error_u 0.0001212368
+L2_error_p 0.00017821359

@@ -1,0 +1,162 @@
+  amr.n_cell = 128 128
+  amr.plot_int = 0
+  diag.interval = 20
+  geometry.is_periodic = 0 0
+  geometry.prob_hi = 1 1
+  geometry.prob_lo = 0 0
+  lin.rtol = 1e-11
+  ns.cfl = 0.25
+  ns.hi_bc = 5 5
+  ns.init_iter = 3
+  ns.lo_bc = 5 5
+  ns.mu = 0.01
+  ns.rho = 1.0
+  ns.steady_tol = 1e-4
+  out_dir = out/cavity_re100_128
+  prob.lid_velocity = 1.0
+  prob.type = cavity
+  stop_time = 30
+ls2d-baseline (single phase)  problem=cavity grid=128x128 rho=1 mu=0.01 g=0  Re=100 (per unit velocity)
+  init iteration 1: dt=1.953e-03 nodal iters=8
+  init iteration 2: dt=1.953e-03 nodal iters=7
+  init iteration 3: dt=1.953e-03 nodal iters=7
+step 50 t=0.09766 dt=1.953e-03 KE=9.181753e-03 divMAC=6.03e-12 divN=1.74e+00 max|dU/dt|=2.360e+00 iters mac/visc/nodal=9/4/5
+step 100 t=0.19531 dt=1.953e-03 KE=1.250450e-02 divMAC=6.37e-12 divN=1.74e+00 max|dU/dt|=1.163e+00 iters mac/visc/nodal=9/4/5
+step 150 t=0.29297 dt=1.953e-03 KE=1.483019e-02 divMAC=6.35e-12 divN=1.74e+00 max|dU/dt|=7.691e-01 iters mac/visc/nodal=9/4/5
+step 200 t=0.39062 dt=1.953e-03 KE=1.664571e-02 divMAC=6.12e-12 divN=1.74e+00 max|dU/dt|=5.729e-01 iters mac/visc/nodal=9/4/5
+step 250 t=0.48828 dt=1.953e-03 KE=1.813826e-02 divMAC=6.01e-12 divN=1.74e+00 max|dU/dt|=4.512e-01 iters mac/visc/nodal=9/3/5
+step 300 t=0.58594 dt=1.953e-03 KE=1.940366e-02 divMAC=5.96e-12 divN=1.74e+00 max|dU/dt|=3.681e-01 iters mac/visc/nodal=9/3/5
+step 350 t=0.68359 dt=1.953e-03 KE=2.049886e-02 divMAC=5.95e-12 divN=1.74e+00 max|dU/dt|=3.076e-01 iters mac/visc/nodal=9/3/5
+step 400 t=0.78125 dt=1.953e-03 KE=2.146104e-02 divMAC=5.97e-12 divN=1.74e+00 max|dU/dt|=2.616e-01 iters mac/visc/nodal=9/3/5
+step 450 t=0.87891 dt=1.953e-03 KE=2.231610e-02 divMAC=5.99e-12 divN=1.74e+00 max|dU/dt|=2.254e-01 iters mac/visc/nodal=9/3/5
+step 500 t=0.97656 dt=1.953e-03 KE=2.308296e-02 divMAC=5.93e-12 divN=1.74e+00 max|dU/dt|=1.961e-01 iters mac/visc/nodal=9/3/5
+step 550 t=1.07422 dt=1.953e-03 KE=2.377593e-02 divMAC=5.87e-12 divN=1.74e+00 max|dU/dt|=1.721e-01 iters mac/visc/nodal=9/3/5
+step 600 t=1.17188 dt=1.953e-03 KE=2.440612e-02 divMAC=5.80e-12 divN=1.74e+00 max|dU/dt|=1.522e-01 iters mac/visc/nodal=9/3/4
+step 650 t=1.26953 dt=1.953e-03 KE=2.498239e-02 divMAC=5.82e-12 divN=1.74e+00 max|dU/dt|=1.356e-01 iters mac/visc/nodal=9/3/4
+step 700 t=1.36719 dt=1.953e-03 KE=2.551188e-02 divMAC=5.82e-12 divN=1.74e+00 max|dU/dt|=1.215e-01 iters mac/visc/nodal=9/3/4
+step 750 t=1.46484 dt=1.953e-03 KE=2.600044e-02 divMAC=5.82e-12 divN=1.74e+00 max|dU/dt|=1.096e-01 iters mac/visc/nodal=9/3/4
+step 800 t=1.56250 dt=1.953e-03 KE=2.645296e-02 divMAC=5.80e-12 divN=1.74e+00 max|dU/dt|=9.927e-02 iters mac/visc/nodal=9/3/4
+step 850 t=1.66016 dt=1.953e-03 KE=2.687349e-02 divMAC=5.81e-12 divN=1.74e+00 max|dU/dt|=9.036e-02 iters mac/visc/nodal=9/3/4
+step 900 t=1.75781 dt=1.953e-03 KE=2.726550e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=8.258e-02 iters mac/visc/nodal=9/3/4
+step 950 t=1.85547 dt=1.953e-03 KE=2.763192e-02 divMAC=5.77e-12 divN=1.74e+00 max|dU/dt|=7.583e-02 iters mac/visc/nodal=9/3/4
+step 1000 t=1.95312 dt=1.953e-03 KE=2.797525e-02 divMAC=5.77e-12 divN=1.74e+00 max|dU/dt|=6.985e-02 iters mac/visc/nodal=9/3/4
+step 1050 t=2.05078 dt=1.953e-03 KE=2.829766e-02 divMAC=5.77e-12 divN=1.74e+00 max|dU/dt|=6.449e-02 iters mac/visc/nodal=9/3/4
+step 1100 t=2.14844 dt=1.953e-03 KE=2.860104e-02 divMAC=5.76e-12 divN=1.74e+00 max|dU/dt|=5.976e-02 iters mac/visc/nodal=9/3/4
+step 1150 t=2.24609 dt=1.953e-03 KE=2.888700e-02 divMAC=5.75e-12 divN=1.74e+00 max|dU/dt|=5.546e-02 iters mac/visc/nodal=9/3/4
+step 1200 t=2.34375 dt=1.953e-03 KE=2.915697e-02 divMAC=5.75e-12 divN=1.74e+00 max|dU/dt|=5.161e-02 iters mac/visc/nodal=9/3/4
+step 1250 t=2.44141 dt=1.953e-03 KE=2.941221e-02 divMAC=5.76e-12 divN=1.74e+00 max|dU/dt|=4.809e-02 iters mac/visc/nodal=9/3/4
+step 1300 t=2.53906 dt=1.953e-03 KE=2.965381e-02 divMAC=5.76e-12 divN=1.74e+00 max|dU/dt|=4.488e-02 iters mac/visc/nodal=9/3/4
+step 1350 t=2.63672 dt=1.953e-03 KE=2.988275e-02 divMAC=5.75e-12 divN=1.74e+00 max|dU/dt|=4.196e-02 iters mac/visc/nodal=9/3/4
+step 1400 t=2.73438 dt=1.953e-03 KE=3.009990e-02 divMAC=5.76e-12 divN=1.74e+00 max|dU/dt|=3.927e-02 iters mac/visc/nodal=9/3/4
+step 1450 t=2.83203 dt=1.953e-03 KE=3.030604e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=3.678e-02 iters mac/visc/nodal=9/3/4
+step 1500 t=2.92969 dt=1.953e-03 KE=3.050185e-02 divMAC=5.81e-12 divN=1.74e+00 max|dU/dt|=3.449e-02 iters mac/visc/nodal=9/3/4
+step 1550 t=3.02734 dt=1.953e-03 KE=3.068796e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.238e-02 iters mac/visc/nodal=9/3/4
+step 1600 t=3.12500 dt=1.953e-03 KE=3.086495e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.042e-02 iters mac/visc/nodal=9/3/4
+step 1650 t=3.22266 dt=1.953e-03 KE=3.103332e-02 divMAC=5.82e-12 divN=1.74e+00 max|dU/dt|=2.860e-02 iters mac/visc/nodal=9/3/4
+step 1700 t=3.32031 dt=1.953e-03 KE=3.119356e-02 divMAC=5.82e-12 divN=1.74e+00 max|dU/dt|=2.692e-02 iters mac/visc/nodal=9/3/4
+step 1750 t=3.41797 dt=1.953e-03 KE=3.134610e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=2.534e-02 iters mac/visc/nodal=9/3/4
+step 1800 t=3.51562 dt=1.953e-03 KE=3.149133e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=2.388e-02 iters mac/visc/nodal=9/3/4
+step 1850 t=3.61328 dt=1.953e-03 KE=3.162962e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=2.251e-02 iters mac/visc/nodal=9/3/4
+step 1900 t=3.71094 dt=1.953e-03 KE=3.176133e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=2.123e-02 iters mac/visc/nodal=9/3/4
+step 1950 t=3.80859 dt=1.953e-03 KE=3.188678e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=2.003e-02 iters mac/visc/nodal=9/3/4
+step 2000 t=3.90625 dt=1.953e-03 KE=3.200626e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=1.891e-02 iters mac/visc/nodal=9/3/4
+step 2050 t=4.00391 dt=1.953e-03 KE=3.212006e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=1.786e-02 iters mac/visc/nodal=9/3/4
+step 2100 t=4.10156 dt=1.953e-03 KE=3.222845e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=1.687e-02 iters mac/visc/nodal=9/3/4
+step 2150 t=4.19922 dt=1.953e-03 KE=3.233168e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=1.595e-02 iters mac/visc/nodal=9/3/4
+step 2200 t=4.29688 dt=1.953e-03 KE=3.242999e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=1.508e-02 iters mac/visc/nodal=9/3/4
+step 2250 t=4.39453 dt=1.953e-03 KE=3.252361e-02 divMAC=5.77e-12 divN=1.74e+00 max|dU/dt|=1.426e-02 iters mac/visc/nodal=9/3/4
+step 2300 t=4.49219 dt=1.953e-03 KE=3.261275e-02 divMAC=5.76e-12 divN=1.74e+00 max|dU/dt|=1.349e-02 iters mac/visc/nodal=9/3/4
+step 2350 t=4.58984 dt=1.953e-03 KE=3.269763e-02 divMAC=5.76e-12 divN=1.74e+00 max|dU/dt|=1.276e-02 iters mac/visc/nodal=9/3/4
+step 2400 t=4.68750 dt=1.953e-03 KE=3.277843e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=1.208e-02 iters mac/visc/nodal=9/3/4
+step 2450 t=4.78516 dt=1.953e-03 KE=3.285534e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=1.144e-02 iters mac/visc/nodal=9/3/4
+step 2500 t=4.88281 dt=1.953e-03 KE=3.292855e-02 divMAC=5.78e-12 divN=1.74e+00 max|dU/dt|=1.083e-02 iters mac/visc/nodal=9/3/4
+step 2550 t=4.98047 dt=1.953e-03 KE=3.299822e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=1.026e-02 iters mac/visc/nodal=9/3/4
+step 2600 t=5.07812 dt=1.953e-03 KE=3.306451e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=9.713e-03 iters mac/visc/nodal=9/3/4
+step 2650 t=5.17578 dt=1.953e-03 KE=3.312759e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=9.201e-03 iters mac/visc/nodal=9/3/4
+step 2700 t=5.27344 dt=1.953e-03 KE=3.318760e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=8.717e-03 iters mac/visc/nodal=9/3/4
+step 2750 t=5.37109 dt=1.953e-03 KE=3.324468e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=8.260e-03 iters mac/visc/nodal=9/3/4
+step 2800 t=5.46875 dt=1.953e-03 KE=3.329898e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=7.827e-03 iters mac/visc/nodal=9/2/4
+step 2850 t=5.56641 dt=1.953e-03 KE=3.335061e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=7.417e-03 iters mac/visc/nodal=9/2/4
+step 2900 t=5.66406 dt=1.953e-03 KE=3.339971e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=7.030e-03 iters mac/visc/nodal=9/2/4
+step 2950 t=5.76172 dt=1.953e-03 KE=3.344640e-02 divMAC=5.79e-12 divN=1.74e+00 max|dU/dt|=6.663e-03 iters mac/visc/nodal=9/2/4
+step 3000 t=5.85938 dt=1.953e-03 KE=3.349079e-02 divMAC=5.80e-12 divN=1.74e+00 max|dU/dt|=6.316e-03 iters mac/visc/nodal=9/2/4
+step 3050 t=5.95703 dt=1.953e-03 KE=3.353298e-02 divMAC=5.80e-12 divN=1.74e+00 max|dU/dt|=5.987e-03 iters mac/visc/nodal=9/2/4
+step 3100 t=6.05469 dt=1.953e-03 KE=3.357309e-02 divMAC=5.80e-12 divN=1.74e+00 max|dU/dt|=5.676e-03 iters mac/visc/nodal=9/2/4
+step 3150 t=6.15234 dt=1.953e-03 KE=3.361121e-02 divMAC=5.81e-12 divN=1.74e+00 max|dU/dt|=5.381e-03 iters mac/visc/nodal=9/2/4
+step 3200 t=6.25000 dt=1.953e-03 KE=3.364744e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=5.102e-03 iters mac/visc/nodal=9/2/4
+step 3250 t=6.34766 dt=1.953e-03 KE=3.368187e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=4.837e-03 iters mac/visc/nodal=9/2/4
+step 3300 t=6.44531 dt=1.953e-03 KE=3.371458e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=4.586e-03 iters mac/visc/nodal=9/2/4
+step 3350 t=6.54297 dt=1.953e-03 KE=3.374566e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=4.348e-03 iters mac/visc/nodal=9/2/4
+step 3400 t=6.64062 dt=1.953e-03 KE=3.377519e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=4.131e-03 iters mac/visc/nodal=9/2/4
+step 3450 t=6.73828 dt=1.953e-03 KE=3.380324e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=3.926e-03 iters mac/visc/nodal=9/2/4
+step 3500 t=6.83594 dt=1.953e-03 KE=3.382989e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=3.731e-03 iters mac/visc/nodal=9/2/4
+step 3550 t=6.93359 dt=1.953e-03 KE=3.385520e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=3.545e-03 iters mac/visc/nodal=9/2/4
+step 3600 t=7.03125 dt=1.953e-03 KE=3.387924e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=3.368e-03 iters mac/visc/nodal=9/2/4
+step 3650 t=7.12891 dt=1.953e-03 KE=3.390207e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.200e-03 iters mac/visc/nodal=9/2/4
+step 3700 t=7.22656 dt=1.953e-03 KE=3.392375e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.040e-03 iters mac/visc/nodal=9/2/4
+step 3750 t=7.32422 dt=1.953e-03 KE=3.394434e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=2.888e-03 iters mac/visc/nodal=9/2/4
+step 3800 t=7.42188 dt=1.953e-03 KE=3.396389e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=2.743e-03 iters mac/visc/nodal=9/2/4
+step 3850 t=7.51953 dt=1.953e-03 KE=3.398245e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.605e-03 iters mac/visc/nodal=9/2/4
+step 3900 t=7.61719 dt=1.953e-03 KE=3.400008e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.473e-03 iters mac/visc/nodal=9/2/4
+step 3950 t=7.71484 dt=1.953e-03 KE=3.401681e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=2.349e-03 iters mac/visc/nodal=9/2/4
+step 4000 t=7.81250 dt=1.953e-03 KE=3.403270e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.230e-03 iters mac/visc/nodal=9/2/3
+step 4050 t=7.91016 dt=1.953e-03 KE=3.404778e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.117e-03 iters mac/visc/nodal=9/2/3
+step 4100 t=8.00781 dt=1.953e-03 KE=3.406210e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=2.010e-03 iters mac/visc/nodal=9/2/3
+step 4150 t=8.10547 dt=1.953e-03 KE=3.407569e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.908e-03 iters mac/visc/nodal=9/2/3
+step 4200 t=8.20312 dt=1.953e-03 KE=3.408859e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.811e-03 iters mac/visc/nodal=9/2/3
+step 4250 t=8.30078 dt=1.953e-03 KE=3.410084e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.719e-03 iters mac/visc/nodal=9/2/3
+step 4300 t=8.39844 dt=1.953e-03 KE=3.411246e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.632e-03 iters mac/visc/nodal=9/2/3
+step 4350 t=8.49609 dt=1.953e-03 KE=3.412349e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=1.549e-03 iters mac/visc/nodal=9/2/3
+step 4400 t=8.59375 dt=1.953e-03 KE=3.413396e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.470e-03 iters mac/visc/nodal=9/2/3
+step 4450 t=8.69141 dt=1.953e-03 KE=3.414390e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.395e-03 iters mac/visc/nodal=9/2/3
+step 4500 t=8.78906 dt=1.953e-03 KE=3.415333e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=1.324e-03 iters mac/visc/nodal=9/2/3
+step 4550 t=8.88672 dt=1.953e-03 KE=3.416228e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.256e-03 iters mac/visc/nodal=9/2/3
+step 4600 t=8.98438 dt=1.953e-03 KE=3.417077e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.192e-03 iters mac/visc/nodal=9/2/3
+step 4650 t=9.08203 dt=1.953e-03 KE=3.417883e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.131e-03 iters mac/visc/nodal=9/2/3
+step 4700 t=9.17969 dt=1.953e-03 KE=3.418648e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.073e-03 iters mac/visc/nodal=9/2/3
+step 4750 t=9.27734 dt=1.953e-03 KE=3.419373e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.018e-03 iters mac/visc/nodal=9/2/3
+step 4800 t=9.37500 dt=1.953e-03 KE=3.420062e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=9.663e-04 iters mac/visc/nodal=9/2/3
+step 4850 t=9.47266 dt=1.953e-03 KE=3.420715e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=9.168e-04 iters mac/visc/nodal=9/2/3
+step 4900 t=9.57031 dt=1.953e-03 KE=3.421336e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=8.699e-04 iters mac/visc/nodal=9/2/3
+step 4950 t=9.66797 dt=1.953e-03 KE=3.421924e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=8.253e-04 iters mac/visc/nodal=9/2/3
+step 5000 t=9.76562 dt=1.953e-03 KE=3.422482e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=7.830e-04 iters mac/visc/nodal=9/2/3
+step 5050 t=9.86328 dt=1.953e-03 KE=3.423012e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=7.429e-04 iters mac/visc/nodal=9/2/3
+step 5100 t=9.96094 dt=1.953e-03 KE=3.423514e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=7.048e-04 iters mac/visc/nodal=9/2/3
+step 5150 t=10.05859 dt=1.953e-03 KE=3.423991e-02 divMAC=5.82e-12 divN=1.74e+00 max|dU/dt|=6.686e-04 iters mac/visc/nodal=9/2/3
+step 5200 t=10.15625 dt=1.953e-03 KE=3.424443e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=6.343e-04 iters mac/visc/nodal=9/2/3
+step 5250 t=10.25391 dt=1.953e-03 KE=3.424872e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=6.018e-04 iters mac/visc/nodal=9/2/3
+step 5300 t=10.35156 dt=1.953e-03 KE=3.425280e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=5.709e-04 iters mac/visc/nodal=9/2/3
+step 5350 t=10.44922 dt=1.953e-03 KE=3.425666e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=5.416e-04 iters mac/visc/nodal=9/2/3
+step 5400 t=10.54688 dt=1.953e-03 KE=3.426032e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=5.137e-04 iters mac/visc/nodal=9/2/3
+step 5450 t=10.64453 dt=1.953e-03 KE=3.426380e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=4.873e-04 iters mac/visc/nodal=9/2/3
+step 5500 t=10.74219 dt=1.953e-03 KE=3.426710e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=4.623e-04 iters mac/visc/nodal=9/2/3
+step 5550 t=10.83984 dt=1.953e-03 KE=3.427023e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=4.386e-04 iters mac/visc/nodal=9/2/3
+step 5600 t=10.93750 dt=1.953e-03 KE=3.427320e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=4.160e-04 iters mac/visc/nodal=9/2/3
+step 5650 t=11.03516 dt=1.953e-03 KE=3.427601e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.946e-04 iters mac/visc/nodal=9/2/3
+step 5700 t=11.13281 dt=1.953e-03 KE=3.427868e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=3.743e-04 iters mac/visc/nodal=9/2/3
+step 5750 t=11.23047 dt=1.953e-03 KE=3.428122e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.551e-04 iters mac/visc/nodal=9/2/3
+step 5800 t=11.32812 dt=1.953e-03 KE=3.428362e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.368e-04 iters mac/visc/nodal=9/2/3
+step 5850 t=11.42578 dt=1.953e-03 KE=3.428590e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.195e-04 iters mac/visc/nodal=9/2/3
+step 5900 t=11.52344 dt=1.953e-03 KE=3.428807e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=3.031e-04 iters mac/visc/nodal=9/2/3
+step 5950 t=11.62109 dt=1.953e-03 KE=3.429012e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.875e-04 iters mac/visc/nodal=9/2/3
+step 6000 t=11.71875 dt=1.953e-03 KE=3.429207e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.727e-04 iters mac/visc/nodal=9/2/3
+step 6050 t=11.81641 dt=1.953e-03 KE=3.429391e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.587e-04 iters mac/visc/nodal=9/2/3
+step 6100 t=11.91406 dt=1.953e-03 KE=3.429566e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.454e-04 iters mac/visc/nodal=9/2/3
+step 6150 t=12.01172 dt=1.953e-03 KE=3.429733e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.327e-04 iters mac/visc/nodal=9/2/3
+step 6200 t=12.10938 dt=1.953e-03 KE=3.429890e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.208e-04 iters mac/visc/nodal=9/2/3
+step 6250 t=12.20703 dt=1.953e-03 KE=3.430040e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=2.094e-04 iters mac/visc/nodal=9/2/3
+step 6300 t=12.30469 dt=1.953e-03 KE=3.430182e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.986e-04 iters mac/visc/nodal=9/2/3
+step 6350 t=12.40234 dt=1.953e-03 KE=3.430316e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.884e-04 iters mac/visc/nodal=9/2/3
+step 6400 t=12.50000 dt=1.953e-03 KE=3.430444e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.787e-04 iters mac/visc/nodal=9/2/3
+step 6450 t=12.59766 dt=1.953e-03 KE=3.430565e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.695e-04 iters mac/visc/nodal=9/2/3
+step 6500 t=12.69531 dt=1.953e-03 KE=3.430680e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.608e-04 iters mac/visc/nodal=9/2/3
+step 6550 t=12.79297 dt=1.953e-03 KE=3.430789e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.525e-04 iters mac/visc/nodal=9/2/3
+step 6600 t=12.89062 dt=1.953e-03 KE=3.430892e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.447e-04 iters mac/visc/nodal=9/2/3
+step 6650 t=12.98828 dt=1.953e-03 KE=3.430990e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.372e-04 iters mac/visc/nodal=9/2/3
+step 6700 t=13.08594 dt=1.953e-03 KE=3.431083e-02 divMAC=5.84e-12 divN=1.74e+00 max|dU/dt|=1.302e-04 iters mac/visc/nodal=9/2/3
+step 6750 t=13.18359 dt=1.953e-03 KE=3.431171e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.235e-04 iters mac/visc/nodal=9/2/3
+step 6800 t=13.28125 dt=1.953e-03 KE=3.431255e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.171e-04 iters mac/visc/nodal=9/2/3
+step 6850 t=13.37891 dt=1.953e-03 KE=3.431334e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.111e-04 iters mac/visc/nodal=9/2/3
+step 6900 t=13.47656 dt=1.953e-03 KE=3.431409e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=1.054e-04 iters mac/visc/nodal=9/2/3
+step 6950 t=13.57422 dt=1.953e-03 KE=3.431481e-02 divMAC=5.83e-12 divN=1.74e+00 max|dU/dt|=9.993e-05 iters mac/visc/nodal=9/2/3
+done: 6950 steps, t=13.5742, max|dU/dt|=9.993e-05 at cell (23,70), rms 5.903e-05 (steady), wall 815.4 s

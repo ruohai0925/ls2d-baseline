@@ -1,6 +1,6 @@
 CXX ?= g++
 CXXFLAGS ?= -O2 -std=c++17 -Wall -Wextra
-SRC = src/main.cpp src/levelset.cpp src/advect.cpp src/io.cpp src/problems.cpp src/godunov.cpp src/linsolve.cpp src/mg.cpp src/flow.cpp src/problems_flow.cpp src/main_flow.cpp
+SRC = src/io.cpp src/godunov.cpp src/linsolve.cpp src/mg.cpp src/flow.cpp src/problems_flow.cpp src/main_flow.cpp
 ls2d: $(SRC) src/*.h
 	$(CXX) $(CXXFLAGS) -o $@ $(SRC)
 debug: $(SRC) src/*.h

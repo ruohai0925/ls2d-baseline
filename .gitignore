@@ -3,12 +3,11 @@ ls2d
 ls2d_dbg
 *.o
 __pycache__/
-# run snapshots (~90 MB); diag.csv / summary.txt / logs / png of every reported run are tracked
+# files moved aside while stripping the two-phase machinery (not part of this branch)
+trash/
+# run snapshots; diag.csv / summary.txt / centreline_*.txt / logs of every reported run are tracked
 out/**/*.vtk
-out/**/phi_final.txt
 out/_inputs/
-# publisher PDFs (Elsevier / Wiley) are not redistributed; see references/README.md for DOIs
+# publisher PDFs (Elsevier) are not redistributed; see references/README.md for DOIs
 references/A Conservative Adaptive Projection Method*.pdf
 references/An Adaptive Level Set Approach*.pdf
-references/GuermondSalgado2009_splitting_variable_density.pdf
-references/Hysing2009_bubble_benchmark.pdf

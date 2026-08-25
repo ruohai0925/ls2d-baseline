@@ -2,10 +2,10 @@
 //
 // Boundary codes are read from `ns.lo_bc / ns.hi_bc` (one integer per side):
 //   0 periodic   1 inflow   2 outflow   3 symmetry   4 slip wall   5 no-slip wall
-// For a scalar such as the level-set function every non-periodic boundary is
-// treated as zero-gradient (first-order extrapolation), which is what a typical
-// FillPatch with FOEXTRAP does for `phi`.  Velocity components get their own
-// treatment in the flow solver (flow.cpp).
+// Every non-periodic boundary is treated as zero-gradient (first-order
+// extrapolation), which is what a typical FillPatch with FOEXTRAP does for a
+// cell-centred scalar.  Velocity components get their own treatment in the flow
+// solver (FlowSolver::fill_velocity_ghosts, flow.cpp).
 #pragma once
 #include "grid.h"
 

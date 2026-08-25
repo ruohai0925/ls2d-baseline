@@ -1,0 +1,12 @@
+problem cavity
+grid 96 96
+steps 8640
+t_final 45
+steady 0
+max_dudt 1.0330541
+max_dudt_cell 94 94
+rms_dudt 0.014753015
+wall_time_s 778.37122
+kinetic_energy 0.042996316
+max_div_mac 5.1407767e-12
+max_div_nodal 2.9757361

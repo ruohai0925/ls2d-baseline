@@ -1,4 +1,4 @@
-// io.cpp — legacy VTK and plain-text field writers (see io.h).
+// io.cpp — legacy VTK field writer (see io.h).
 #include "io.h"
 #include <fstream>
 #include <stdexcept>
@@ -16,8 +16,3 @@ void write_vtk(const std::string& filename, const Geometry& g, const std::vector
     }
 }
 
-// Plain-text matrix of the interior cells, one row per j, 15 significant digits.
-void write_ascii(const std::string& filename, const Geometry& g, const Field2D& f) {
-    std::ofstream os(filename); os.precision(15);
-    for (int j = 0; j < g.ny; ++j) { for (int i = 0; i < g.nx; ++i) os << f(i, j) << (i + 1 < g.nx ? " " : ""); os << "\n"; }
-}

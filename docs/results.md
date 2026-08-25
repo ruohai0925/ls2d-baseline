@@ -1,57 +1,15 @@
-# ls2d — validation results against the literature
+# ls2d (single-phase) — validation results against the literature
 
-All numbers here are produced by the final code in `src/` (unsplit Godunov-PLM advection, level-set redistancing
-every step with the Sussman–Fatemi volume constraint, MAC projection + Crank–Nicolson viscous step + Q1 nodal
-approximate projection, geometric multigrid, continuum surface tension). Each row can be regenerated with the
-listed input file; `scripts/run_table.sh` runs the grid sequences.
+All numbers here are produced by the code in `src/` (unsplit Godunov-PLM advection, MAC projection +
+Crank–Nicolson viscous step + Q1 nodal approximate projection, geometric multigrid, constant ρ and μ).
+Every row can be reproduced from the listed input file; `scripts/run_table.sh` runs the grid sequences and
+`scripts/compare_ghia.py` produces the cavity comparison tables. Wall times are single-core, `g++ -O2`,
+on a machine also running other jobs.
 
-Interface error: err/L = (1/L) ∫ |H(φ_exact) − H(φ)| dx with L the initial interface length
-(Sussman et al. 1999 eq. 80; Enright et al. 2002 eq. 14). Area = ∫ H(φ) dx with the sharp Heaviside.
+## 1. Taylor–Green vortex (`tests/inputs.taylorgreen`) — analytic solution
 
-## 0. Redistancing alone — analytic signed distance (`tests/inputs.disk`)
-A circle of radius 0.25 on 128², initialised with the distorted signed distance φ₀ = d + 20 d³ (d = R − r), then
-redistanced with 40 Heun iterations (Δτ = Δx/2, ε = 2Δx, volume constraint on) and no advection.
-
-| quantity | ls2d | exact |
-|---|---|---|
-| area change | +0.016 % | 0 |
-| err/L | 1.9e-5 | 0 |
-| max ||∇φ| − 1| in the band | 1.1e-3 | 0 |
-
-The zero contour stays put while |∇φ| → 1: the Sussman–Fatemi constraint behaves as designed.
-
-## 1. Interface transport with a prescribed velocity — Enright et al., JCP 183 (2002), Tables 1 and 3, "level set" column
-
-### 1.1 Zalesak's slotted disk, one revolution (`tests/inputs.zalesak`)
-Domain [0,100]², disk R = 15 centred at (50,75), slot width 5, length 25; solid-body rotation, period 628.
-
-| grid | area change, ls2d | area change, Enright | err/L, ls2d | err/L, Enright |
-|---|---|---|---|---|
-| 50²  | −7.6 %  | −100 %  | 1.60  | 4.03 |
-| 100² | −1.8 %  | +5.3 %  | 0.40  | 0.61 |
-| 200² | −0.04 % | +0.54 % | 0.036 | 0.08 |
-
-Observed convergence order 100² → 200²: 3.5 (Enright: 2.9).
-
-### 1.2 Single vortex, time-reversed, T = 8 (`tests/inputs.vortex`)
-Unit box, circle R = 0.15 at (0.5,0.75), ψ = π⁻¹ sin²(πx) sin²(πy) cos(πt/T).
-
-| grid | area change, ls2d | area change, Enright | err/L, ls2d | err/L, Enright |
-|---|---|---|---|---|
-| 64²  | +101 % | −100 %  | 0.080  | 0.075 |
-| 128² | +29 %  | −39.8 % | 0.0256 | 0.031 |
-| 256² | +3.1 % | −10.3 % | 0.0079 | 0.008 |
-
-The interface error matches or beats the reference on every grid. The area *gain* (instead of Enright's loss) is a
-property of the Sussman–Fatemi constraint, which conserves the ε-smoothed volume ∫H_ε(φ): where the filament is
-thinner than 2ε, restoring |∇φ| = 1 while holding that volume pushes the zero contour outward. With the band of
-H'_ε in the constraint narrowed to one cell (`reinit.alpha_delta = 1`) the 128² result becomes −0.8 % / 0.0297.
-Without the constraint (`reinit.volume_fix = 0`): −22.6 % / 0.0266.
-
-## 2. Single-phase flow and hydrostatics — analytic solutions
-
-### 2.1 Taylor–Green vortex (`tests/inputs.taylorgreen`; 32² and 128² via `scripts/run_table.sh`), ν = 0.01, t = 0.2, CFL 0.5
-u = sin2πx cos2πy e^{−8π²νt}, v = −cos2πx sin2πy e^{−8π²νt}, periodic unit box.
+u = sin2πx cos2πy e^{−8π²νt}, v = −cos2πx sin2πy e^{−8π²νt}, periodic unit box, ν = 0.01, t = 0.2, CFL 0.5.
+Grids 32² and 128² via `scripts/run_table.sh tests/inputs.taylorgreen tg "" 32 64 128`.
 
 | grid | L2(u) error | order | max nodal divergence |
 |---|---|---|---|
@@ -59,68 +17,94 @@ u = sin2πx cos2πy e^{−8π²νt}, v = −cos2πx sin2πy e^{−8π²νt}, per
 | 64²  | 9.08e-5 | 2.40 | 8.9e-4 |
 | 128² | 2.37e-5 | 1.94 | 1.7e-4 |
 
-Second-order velocity; the O(h²) residual nodal divergence is the expected signature of the approximate projection
-(Almgren et al. 1998).
+Second-order velocity; the O(h²) residual nodal divergence is the expected signature of the approximate
+projection (Almgren et al. 1998).
 
-### 2.2 Hydrostatic two-fluid interface (`tests/inputs.hydrostatic`), ρ 1:1000, g = 9.81, 64², t = 0.5
-max |u| = 1.7e-12, kinetic energy 1.5e-24: the density jump generates no spurious currents.
+**Regression against the two-phase code.** These are the numbers of the `main` branch (two-phase solver run
+with equal densities and viscosities, `ns.do_phi = 0`). Removing the level-set machinery reproduces them
+*bit for bit*: L2(u) = 4.8097373e-4 / 9.0829289e-5 / 2.3725758e-5, L2(v) = 4.7106217e-4 / 8.5033621e-5 /
+2.2327919e-5, L2(p) = 9.501992e-4 / 5.7014875e-4 / 1.7821359e-4, max nodal divergence 7.5368108e-3 /
+8.9474169e-4 / 1.6681381e-4 and the same 12 / 24 / 48 time steps on 32² / 64² / 128² in both branches. The
+strip is therefore exact on this path, not merely accurate to the three digits printed above.
 
-## 3. Two-phase flow — literature benchmarks
+## 2. Lid-driven cavity — Ghia, Ghia & Shin, JCP 48 (1982) 387, Tables I and II
 
-### 3.1 Rayleigh–Taylor instability (`tests/inputs.rt`, `tests/inputs.rt128`) — Tryggvason, JCP 75 (1988); Guermond & Salgado, JCP 228 (2009) §5.2, Fig. 1
-Domain (−½,½)×(−2,2), heavy fluid above, ρ 3:1 (At = 0.5), Re = ρ_min d^{3/2} g^{1/2}/μ = 1000,
-η(x) = −0.1 cos(2πx), no-slip top/bottom, periodic sides, 64×256. Tryggvason time t_T = t√At.
+`tests/inputs.cavity` (Re = 100), `tests/inputs.cavity_re400`, `tests/inputs.cavity_re1000`.
+Unit square, fluid initially at rest, no-slip on all four walls, the top wall sliding at u = 1;
+ρ = 1, μ = 1/Re, so Re = ρUL/μ. Grid 96², CFL 0.5. The run stops when the flow is steady,
+max |dU/dt| < `ns.steady_tol` = 1e-4, or at `stop_time`.
 
-Guermond–Salgado give no table; their Fig. 1 (density field, six frames, half domain) was digitised with
-`scripts/digitize_gs2009.py` (89 px per unit length, so the reference tips are accurate to about ±0.01;
-their mesh size is 0.025 in the refined region, ours 1/64 = 0.0156).
+Reference: the 129×129 solution of Ghia et al., Table I (u at the 17 tabulated y on the vertical centreline
+x = 0.5) and Table II (v at the 17 tabulated x on the horizontal centreline y = 0.5), transcribed in
+`references/ghia1982_cavity.txt`. ls2d writes those two cuts to `centreline_u.txt` / `centreline_v.txt`;
+`scripts/compare_ghia.py <Re> <run dir>` interpolates them linearly to Ghia's locations and prints the
+deviations. The two wall points of each table (u = 0/1 at y = 0/1, v = 0 at x = 0/1) are imposed exactly by
+the boundary condition and are excluded, as is the Re = 400, x = 0.9063 entry of Table II, which is a
+misprint in the original (see the header of `references/ghia1982_cavity.txt`; ls2d gives −0.3838 there,
+between the neighbouring −0.4503 and −0.2301, where the table prints −0.23827).
 
-| t_T | spike tip: ls2d 64×256 | ls2d 128×512 | G–S Fig. 1 | bubble tip: ls2d 64×256 | ls2d 128×512 | G–S Fig. 1 |
-|---|---|---|---|---|---|---|
-| 1.00 | −0.365 | −0.371 | −0.360 | 0.296 | 0.298 | 0.303 |
-| 1.50 | −0.613 | −0.622 | −0.607 | 0.427 | 0.432 | 0.449 |
-| 1.75 | −0.727 | −0.740 | −0.734 | 0.487 | 0.494 | 0.499 |
-| 2.00 | −0.836 | −0.852 | −0.849 | 0.544 | 0.554 | 0.581 |
-| 2.25 | −0.944 | −0.962 | −0.969 | 0.598 | 0.613 | 0.633 |
-| 2.50 | −1.061 | −1.079 | −1.092 | 0.652 | 0.671 | 0.711 |
+| Re | grid | steps | t_final | steady | wall time | max \|ls2d − Ghia\| | where |
+|---|---|---|---|---|---|---|---|
+| 100  | 96² | 2607 | 13.58 | yes, max\|dU/dt\| = 1.0e-4 | 210 s | 0.0088 | v(x = 0.8594) |
+| 400  | 96² | 6205 | 32.32 | yes, max\|dU/dt\| = 1.0e-4 | 478 s | 0.0032 | u(y = 0.1016) |
+| 1000 | 96² | 8640 | 45.00 | see below | 778 s | 0.0106 | u(y = 0.0703) |
 
-(ls2d values interpolated from `diag.csv` columns `interface_ymin/ymax` at t = t_T/√At.)
-Spike tip agrees with the digitised reference within 0.03 (64×256) / 0.015 (128×512) over the whole sequence.
-The bubble tip lags the reference by 0.06 (64×256) and 0.04 (128×512) at t_T = 2.5 and the gap shrinks with
-refinement; the secondary roll-up of the mushroom appears in both codes at t_T ≥ 2. Phase-area drift over the
-run: 0.5 % (64×256), 1.8 % (128×512, more thin filaments in the roll-up — see the volume-constraint note in §1.2).
-Figure: `out/rt64/interface_evolution.png`.
+Grid-refinement check at Re = 100 (`tests/inputs.cavity_128`, 128², CFL 0.25 — see the remark on the time
+step below): 6950 steps, t = 13.57, steady, 815 s, max deviation again 0.0088 at v(x = 0.8594). The two grids
+agree with each other to 4.7e-4 at every one of Ghia's locations (e.g. v(0.8594) = −0.23324 on 96² and −0.23325
+on 128²), so the 96² results are grid-converged and the remaining difference from Table I/II is not a
+resolution effect.
 
-### 3.2 Static drop (`tests/inputs.staticdrop`) — Laplace law
-R = 0.25, σ = 1, ρ 1:1, μ = 0.1, 64² periodic, t = 0.5.
+Away from the listed worst points the agreement is much closer: at Re = 400 every compared value is
+within 0.0033 and the whole v-profile within 0.0017; at Re = 1000 every value is within 0.0024
+except the four points inside the bottom boundary layer (y ≤ 0.1016), where 96² has about three cells across
+the layer and ls2d under-predicts |u| by ~0.010. Full tables:
+`python3 scripts/compare_ghia.py 100 out/cavity_re100_96 400 out/cavity_re400_96 1000 out/cavity_re1000_96`.
 
-| quantity | ls2d | exact |
-|---|---|---|
-| p_max − p_min | 4.03 | σ/R = 4 (+0.8 %) |
-| max spurious velocity | 1.5e-3 (Ca ≈ 1.5e-4), steady | 0 |
-| circularity | 1.002 | 1 |
+### Steadiness at Re = 1000
 
-### 3.3 Rising bubble (`tests/inputs.hysing1`, `tests/inputs.hysing1_80`) — Hysing et al., IJNMF 60 (2009), test case 1
-Domain [0,1]×[0,2], R = 0.25 at (0.5,0.5), ρ 1000/100, μ 10/1, σ = 24.5, g = 0.98 (Re 35, Eo 10),
-no-slip top/bottom, free-slip sides, T = 3. Reference: TP2D, 1/h = 320 (`references/hysing_featflow_data/data_bench_quantities/c1g1l7.txt`).
+At Re = 1000 the two cells at the upper corners settle into a small limit cycle of period 60 steps, so the
+*maximum* of |dU/dt| never falls below the tolerance (it cycles between 0.35 and 1.03, with the maximum
+always in cell (94,94) — `max_dudt_cell` in `summary.txt`). The bulk flow is steady: over the last time unit
+of the run the kinetic energy changes by 2.5e-4 of itself, and the domain rms of |dU/dt| is 0.015, comparable to
+the 0.010 that a single cell of the 9216 oscillating with amplitude 1 would produce on its own. That run therefore ends at
+`stop_time` = 45 rather than on the steadiness test. At Re = 100 and
+Re = 400 the maximum sits at an interior cell and the test triggers normally.
 
-| grid | min circularity (t) | max rise velocity (t) | y_c at t = 3 |
-|---|---|---|---|
-| 40×80    | 0.9060 (1.87) | 0.2385 (0.94) | 1.0856 |
-| 80×160   | 0.9014 (1.92) | 0.2410 (0.93) | 1.0820 |
-| reference | 0.9013 (1.90) | 0.2417 (0.92) | 1.0813 |
+### Remarks
 
-All three benchmark quantities are within 0.3 % of the reference at 80×160.
+The lid velocity is discontinuous at the two upper corners, so the flow is not smooth there. Two consequences
+are visible in the diagnostics:
 
-## 4. Summary
+* the residual nodal divergence of the approximate projection, which is O(h²) for the Taylor–Green vortex, is
+  O(1) in the two corner cells (`diag.csv` column `max_div_nodal`: 1.41 / 1.82 / 2.98 at Re = 100 / 400 /
+  1000) and decays away from them;
+* the stable time step is smaller than the CFL estimate suggests. CFL 0.5 is stable on 96² at all three
+  Reynolds numbers, but on 128² the corner cells at Re = 100 drive a saturated oscillation of the whole
+  cavity; CFL 0.25 runs 128² cleanly (max nodal divergence 1.74, monotone decay of max |dU/dt|). CFL 0.9 is
+  unstable already on 64². `ns.cfl = 0.5` is the validated setting for the grids reported above.
+
+The moving-wall condition itself is exact: with periodic sides (`geometry.is_periodic = 1 0`,
+`ns.lo_bc = 0 5`, `ns.hi_bc = 0 5`, `ns.wall_vel_hi = 0 1`) the same problem is plane Couette flow, and ls2d
+reproduces u(y) = y with max |u − y| = 1.0e-8 on 32² — exactly the level at which that run was stopped
+(`ns.steady_tol = 1e-8`), so the error is the residual transient and not the discretisation.
+
+The Re = 100 deviation is dominated by the v-profile on the right half of the horizontal centreline, where
+ls2d is consistently 3–4 % larger in magnitude than Table II (v(0.8594) = −0.2332 against Ghia's −0.22445).
+As the 96²/128² comparison above shows, that value is grid-converged, so the difference is a difference
+between two converged solutions, not a resolution effect on this side. Two candidates remain and nothing
+measured here settles which dominates: the O(1) discretisation error at the singular upper corners, which at
+Re = 100 is spread through the whole cavity by viscous diffusion (the diffusive length over the run,
+sqrt(νt) ≈ 0.37, is comparable to the cavity side, whereas at Re = 400 and Re = 1000 it stays local and the
+profiles agree to ~0.002 outside the bottom boundary layer); and the accuracy of the 1982 129×129 reference
+itself, which is not quantified in the paper.
+
+## 3. Summary
 
 | case | reference | status |
 |---|---|---|
-| redistancing of a circle | analytic | zero contour fixed to 2e-5, |∇φ| = 1 to 1e-3 |
-| Zalesak disk | Enright 2002 Table 1 | err/L below reference on all grids |
-| single vortex T = 8 | Enright 2002 Table 3 | err/L at or below reference; area drift sign explained by the constraint |
-| Taylor–Green | analytic | 2nd order |
-| hydrostatic interface | analytic | machine-zero spurious velocity |
-| Rayleigh–Taylor | Guermond–Salgado 2009 Fig. 1 (digitised) | spike tip within 0.015, bubble tip within 0.04 at 128×512, converging |
-| static drop | Laplace law | Δp within 0.8 % |
-| rising bubble case 1 | Hysing 2009 | ≤ 0.3 % on circularity, rise velocity, centroid |
+| Taylor–Green | analytic | 2nd order in velocity; bit-identical to the two-phase branch with equal fluids |
+| lid-driven cavity, Re = 100 | Ghia et al. 1982, Tables I, II | max deviation 0.0088 (96², 210 s) |
+| lid-driven cavity, Re = 400 | Ghia et al. 1982, Tables I, II | max deviation 0.0032 (96², 478 s) |
+| lid-driven cavity, Re = 1000 | Ghia et al. 1982, Tables I, II | max deviation 0.0106 (96², 778 s) |
+| plane Couette flow | analytic | u(y) = y to 1.0e-8, the level the run was stopped at |

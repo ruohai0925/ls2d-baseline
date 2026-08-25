@@ -1,0 +1,23 @@
+# Lid-driven cavity at Re = 400 (docs/results.md §2; Ghia, Ghia & Shin, JCP 48 (1982) 387).
+# Unit square, no-slip on all four walls, top wall sliding at u = 1; Re = rho U L / mu = 400.
+prob.type = cavity
+prob.lid_velocity = 1.0
+geometry.prob_lo = 0 0
+geometry.prob_hi = 1 1
+geometry.is_periodic = 0 0
+ns.lo_bc = 5 5
+ns.hi_bc = 5 5
+amr.n_cell = 96 96
+ns.rho = 1.0
+ns.mu = 0.0025
+ns.cfl = 0.5
+ns.init_iter = 3
+# stop when the flow is steady, max |dU/dt| < ns.steady_tol, or at stop_time (whichever comes first;
+# at Re = 1000 a period-60-step ringing of the two cells at the upper corners keeps the max above the
+# tolerance for ever, so that run ends at stop_time -- see docs/results.md §2)
+ns.steady_tol = 1e-4
+stop_time = 40
+diag.interval = 20
+amr.plot_int = 0
+lin.rtol = 1e-11
+out_dir = out/cavity_re400_96

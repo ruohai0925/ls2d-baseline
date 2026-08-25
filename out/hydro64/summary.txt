@@ -1,9 +1,0 @@
-problem hydrostatic
-grid 64 64
-steps 18
-t_final 0.5
-kinetic_energy 5.0050112e-23
-max_div_mac 1.0272758e-09
-max_div_nodal 4.9533669e-10
-interface_ymin 0.5
-interface_ymax 0.5

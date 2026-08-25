@@ -1,5 +1,7 @@
 #!/bin/bash
+# Grid sweep for a flow input file: runs every grid in parallel and prints the convergence table.
 # usage: run_table.sh <base inputs> <outprefix> "<extra key=val ...>" grid1 grid2 ...
+#   e.g. scripts/run_table.sh tests/inputs.taylorgreen tg "" 32 64 128
 base=$1; pre=$2; extra=$3; shift 3
 S=out/_inputs; mkdir -p $S
 for n in "$@"; do
@@ -8,5 +10,8 @@ for n in "$@"; do
   ./ls2d $f > out/log.$pre$n 2>&1 &
 done
 wait
-printf "| grid | area | %% loss | err/L | grad_err_max |\n|---|---|---|---|---|\n"
-for n in "$@"; do s=out/$pre$n/summary.txt; printf "| %s | %.4g | %.3g | %.3g | %.3g |\n" $n $(grep area_sharp_final $s|cut -d' ' -f2) $(grep area_loss_pct $s|cut -d' ' -f2) $(grep over_L $s|cut -d' ' -f2) $(grep grad_err_max $s|cut -d' ' -f2); done
+printf "| grid | L2(u) error | max nodal divergence | steps | wall time (s) |\n|---|---|---|---|---|\n"
+for n in "$@"; do s=out/$pre$n/summary.txt
+  printf "| %s | %s | %s | %s | %s |\n" $n "$(grep '^L2_error_u' $s|cut -d' ' -f2)" "$(grep '^max_div_nodal' $s|cut -d' ' -f2)" \
+    "$(grep '^steps' $s|cut -d' ' -f2)" "$(grep '^wall_time_s' $s|cut -d' ' -f2)"
+done
