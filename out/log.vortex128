@@ -1,0 +1,33 @@
+ls2d-baseline  problem=vortex  grid=128x128  dx=0.0078125
+  amr.n_cell = 128 128
+  amr.plot_int = 200
+  diag.interval = 20
+  diag.nsub = 10
+  geometry.is_periodic = 0 0
+  geometry.prob_hi = 1 1
+  geometry.prob_lo = 0 0
+  ns.cfl = 0.5
+  ns.do_reinit = 1
+  ns.epsilon = 2
+  ns.number_of_reinit = 4
+  out_dir = out/vtxG128
+  prob.blob_radius = 0.15
+  prob.blob_x = 0.5
+  prob.blob_y = 0.75
+  prob.reverse_period = 8
+  prob.type = vortex
+  stop_time = 8
+step 100 t=0.392329
+step 200 t=0.794326
+step 300 t=1.2181
+step 400 t=1.68252
+step 500 t=2.226
+step 600 t=2.97506
+step 700 t=4.98383
+step 800 t=5.75236
+step 900 t=6.30098
+step 1000 t=6.76777
+step 1100 t=7.19279
+step 1200 t=7.59541
+step 1300 t=7.98794
+done: area_loss_pct=-28.9671  interface_error=0.0240973  error/L=0.0255632  grad_err_max_band=0.308243

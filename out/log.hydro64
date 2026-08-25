@@ -1,0 +1,4 @@
+ls2d-baseline flow  problem=hydrostatic grid=64x64 rho=1/1000 mu=1e-05/0.001 g=-9.81
+  init iteration 1: dt=2.616e-02 nodal iters=64
+  init iteration 2: dt=2.616e-02 nodal iters=64
+  init iteration 3: dt=2.616e-02 nodal iters=20

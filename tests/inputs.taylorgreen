@@ -1,0 +1,17 @@
+# V4: Taylor–Green decaying vortex, periodic unit box, nu = 0.01
+prob.flow = 1
+prob.type = taylorgreen
+geometry.prob_lo = 0 0
+geometry.prob_hi = 1 1
+geometry.is_periodic = 1 1
+amr.n_cell = 64 64
+ns.do_phi = 0
+ns.rho_w = 1.0
+ns.vel_visc_coef = 0.01
+ns.cfl = 0.5
+ns.init_iter = 3
+stop_time = 0.2
+diag.interval = 10
+amr.plot_int = 0
+lin.rtol = 1e-11
+out_dir = out/tg64

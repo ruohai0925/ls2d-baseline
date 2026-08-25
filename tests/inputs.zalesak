@@ -1,0 +1,17 @@
+# V2: Zalesak's disk, Enright 2002 §3.1 (one revolution = 628 time units)
+prob.type = zalesak
+geometry.prob_lo = 0 0
+geometry.prob_hi = 100 100
+geometry.is_periodic = 0 0
+amr.n_cell = 100 100
+stop_time = 628
+ns.cfl = 0.5
+reinit.init_iters = 20
+ns.do_reinit = 1
+ns.lev0step_of_reinit = 1
+ns.number_of_reinit = 4
+ns.epsilon = 2
+diag.nsub = 10
+diag.interval = 20
+amr.plot_int = 200
+out_dir = out/zalesak100

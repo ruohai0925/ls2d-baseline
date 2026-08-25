@@ -1,0 +1,9 @@
+problem bubble
+grid 40 80
+steps 1136
+t_final 3
+kinetic_energy 20.615811
+max_div_mac 2.5318081e-11
+max_div_nodal 0.10225645
+interface_ymin 0.92161511
+interface_ymax 1.2838784

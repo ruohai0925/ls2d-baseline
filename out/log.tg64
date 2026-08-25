@@ -1,0 +1,5 @@
+ls2d-baseline flow  problem=taylorgreen grid=64x64 rho=1/1 mu=0.01/0.01 g=0
+  init iteration 1: dt=7.831e-03 nodal iters=92
+  init iteration 2: dt=7.831e-03 nodal iters=92
+  init iteration 3: dt=7.831e-03 nodal iters=91
+L2_error_u 9.08293e-05  Linf_u 0.000458205  L2_p 0.365145

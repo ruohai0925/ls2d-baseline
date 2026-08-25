@@ -1,0 +1,17 @@
+# V1: static disk, distorted initial data phi0 = d + 20 d^3 (d = signed distance) -> redistance must recover |grad phi| = 1
+prob.type = disk
+geometry.prob_lo = 0 0
+geometry.prob_hi = 1 1
+geometry.is_periodic = 0 0
+amr.n_cell = 128 128
+prob.blob_x = 0.5
+prob.blob_y = 0.5
+prob.blob_radius = 0.25
+prob.init_slope = 1.0
+prob.init_cubic = 20.0
+stop_time = 0
+reinit.init_iters = 40
+ns.epsilon = 2
+ns.number_of_reinit = 4
+diag.nsub = 10
+out_dir = out/disk128

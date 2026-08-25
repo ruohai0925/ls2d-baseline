@@ -1,0 +1,21 @@
+ls2d-baseline  problem=zalesak  grid=50x50  dx=2
+  amr.n_cell = 50 50
+  amr.plot_int = 200
+  diag.interval = 20
+  diag.nsub = 10
+  geometry.is_periodic = 0 0
+  geometry.prob_hi = 100 100
+  geometry.prob_lo = 0 0
+  ns.cfl = 0.5
+  ns.do_reinit = 1
+  ns.epsilon = 2
+  ns.lev0step_of_reinit = 1
+  ns.number_of_reinit = 4
+  out_dir = out/zalG50
+  prob.type = zalesak
+  reinit.init_iters = 20
+  stop_time = 628
+step 100 t=203.978
+step 200 t=407.956
+step 300 t=611.935
+done: area_loss_pct=7.59988  interface_error=202.28  error/L=1.60364  grad_err_max_band=0.959811
